@@ -1,0 +1,317 @@
+<title>Dally Landscaping</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: spruce hero band with contour-line grade map, spec-sheet service list, season strip, four-step job sequence, contact block. Orange is survey-stake orange and is the only accent. */
+:root {
+  --bg: #F1F4EE;
+  --surface: #E4EADF;
+  --fg: #16251D;
+  --muted: #50625A;
+  --line: #C5D0C0;
+  --band: #1F3B2D;
+  --band-fg: #EDF3EA;
+  --band-muted: #A9BDB0;
+  --band-line: #3A5A48;
+  --accent: #C2470A;
+  --on-accent: #FFFFFF;
+  --now: #D7E3CF;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1913;
+    --surface: #16261D;
+    --fg: #E6EEE3;
+    --muted: #9BAFA2;
+    --line: #2A4034;
+    --band: #12241A;
+    --band-fg: #EDF3EA;
+    --band-muted: #9BB1A3;
+    --band-line: #2F4D3B;
+    --accent: #FF8A3D;
+    --on-accent: #1A0D04;
+    --now: #1F3629;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1913;
+  --surface: #16261D;
+  --fg: #E6EEE3;
+  --muted: #9BAFA2;
+  --line: #2A4034;
+  --band: #12241A;
+  --band-fg: #EDF3EA;
+  --band-muted: #9BB1A3;
+  --band-line: #2F4D3B;
+  --accent: #FF8A3D;
+  --on-accent: #1A0D04;
+  --now: #1F3629;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.08; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Header + hero band */
+.band { background: var(--band); color: var(--band-fg); position: relative; overflow: hidden; }
+.band .label { color: var(--band-muted); }
+.contours { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; pointer-events: none; }
+.contours path { fill: none; stroke: var(--band-line); stroke-width: 1.5; }
+.contours path.index { stroke-width: 2.5; }
+.band .wrap { position: relative; }
+.top {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  align-items: center; justify-content: space-between;
+  padding-block: 22px 0;
+}
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 12px; }
+.brand-name span { color: var(--accent); }
+.logo-ph { display: grid; place-items: center; width: 48px; height: 48px; border: 2px dashed var(--band-muted); border-radius: 4px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--band-muted); font-weight: 400; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; font-weight: 500; }
+.top nav a { text-decoration: none; color: var(--band-muted); }
+.top nav a:hover { color: var(--band-fg); }
+
+.hero { padding-block: 72px 84px; max-width: 760px; }
+.hero h1 { font-size: clamp(40px, 8.5vw, 84px); font-weight: 800; letter-spacing: -0.025em; margin-top: 18px; }
+.hero p.lede { margin-top: 22px; font-size: 19px; max-width: 54ch; color: var(--band-fg); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn {
+  display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 16px;
+  padding: 13px 22px; border-radius: 4px; text-decoration: none; border: 2px solid transparent; cursor: pointer;
+}
+.btn.primary { background: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost { border-color: var(--band-line); color: var(--band-fg); }
+.btn.ghost:hover { border-color: var(--band-muted); }
+
+/* Sections */
+section { padding-block: 72px 0; }
+.sec-head { display: grid; gap: 10px; max-width: 640px; margin-bottom: 30px; }
+.sec-head h2 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.02em; }
+.sec-head p { color: var(--muted); }
+
+/* Services: spec sheet with how each job is measured */
+.spec { border-top: 2px solid var(--fg); }
+.spec-row {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: 6px 28px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline;
+}
+.spec-row h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+.spec-row .unit { font-family: var(--font-mono); font-size: 14px; color: var(--accent); }
+.spec-row p { color: var(--muted); }
+@media (max-width: 720px) {
+  .spec-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Seasons */
+.seasons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); }
+.season { padding: 22px 20px 24px; border-right: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+.season:last-child { border-right: 0; }
+.season h3 { font-size: 24px; font-weight: 700; }
+.season ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 4px; font-size: 16px; }
+.season.now { background: var(--now); }
+.season .tag { display: none; }
+.season.now .tag { display: inline-block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+@media (max-width: 860px) {
+  .seasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .season:nth-child(2) { border-right: 0; }
+  .season:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 480px) {
+  .seasons { grid-template-columns: minmax(0, 1fr); }
+  .season { border-right: 0; border-bottom: 1px solid var(--line); }
+  .season:last-child { border-bottom: 0; }
+}
+
+/* Job sequence */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; counter-reset: step; }
+.steps li { border-top: 3px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; counter-increment: step; }
+.steps li::before { content: "Step " counter(step); font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.steps h3 { font-size: 21px; font-weight: 700; }
+.steps p { color: var(--muted); font-size: 16px; }
+@media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* Contact */
+.contact { background: var(--surface); border: 1px solid var(--line); padding: 34px 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+.contact h2 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -0.02em; }
+.contact .intro { display: grid; gap: 14px; align-content: start; }
+.contact .intro p { color: var(--muted); max-width: 44ch; }
+.fields { display: grid; gap: 0; align-content: start; }
+.field { display: grid; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.field:first-child { border-top: 1px solid var(--line); }
+.field .val { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 20px; font-weight: 600; }
+.field .val span.text { overflow-wrap: anywhere; user-select: all; }
+.copy { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--fg); border: 1px solid var(--line); padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+.copy:hover { border-color: var(--fg); }
+.ph { color: var(--muted); font-weight: 500; }
+@media (max-width: 720px) { .contact { grid-template-columns: minmax(0, 1fr); padding: 26px 20px; } }
+
+footer { padding-block: 40px 48px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; color: var(--muted); font-size: 15px; }
+footer .label { color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .copy { transition: filter .15s, border-color .15s; }
+}
+</style>
+
+<header class="band">
+  <svg class="contours" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-20 430 C 160 380, 260 450, 420 400 S 700 300, 860 350 S 1100 420, 1240 360"/>
+    <path class="index" d="M-20 380 C 150 320, 270 400, 430 340 S 700 230, 870 290 S 1110 370, 1240 300"/>
+    <path d="M-20 330 C 140 270, 280 350, 440 285 S 700 170, 880 235 S 1120 320, 1240 245"/>
+    <path d="M-20 280 C 130 215, 290 300, 450 230 S 710 115, 890 180 S 1130 270, 1240 190"/>
+    <path class="index" d="M-20 230 C 120 160, 300 250, 460 175 S 720 60, 900 125 S 1140 220, 1240 135"/>
+    <path d="M-20 180 C 110 105, 310 200, 470 120 S 730 5, 910 70 S 1150 170, 1240 80"/>
+    <path d="M-20 130 C 100 50, 320 150, 480 65 S 740 -50, 920 15 S 1160 120, 1240 25"/>
+    <path d="M-20 480 C 170 440, 250 505, 410 460 S 690 370, 850 410 S 1090 480, 1240 425"/>
+  </svg>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top"><span class="logo-ph" aria-hidden="true">Logo</span><span class="brand-name">Dally<span>.</span> Landscaping</span></a>
+      <nav aria-label="Sections">
+        <a href="#services">Services</a>
+        <a href="#seasons">Seasons</a>
+        <a href="#process">How it works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="hero" id="top">
+      <p class="label">Lawn care, leaf cleanup and snow removal</p>
+      <h1>Yards that look cared for, all year.</h1>
+      <p class="lede">Dally Landscaping handles the grass and gardens in spring and summer, the leaves in fall and the snow in winter, so your property looks good in every season without you thinking about it.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Get a free quote</a>
+        <a class="btn ghost" href="#services">See what we do</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="services">
+    <div class="sec-head">
+      <p class="label">Services</p>
+      <h2>What we take care of</h2>
+      <p>If it has to do with your yard, we do it. Every job is priced and measured in units you can check, so the quote matches the work.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-row"><h3>Lawn mowing and edging</h3><span class="unit">Per visit, weekly or every other week</span><p>Mowed, edged along walks and beds, and blown clean before we leave.</p></div>
+      <div class="spec-row"><h3>Mulch and bed care</h3><span class="unit">By the cubic yard</span><p>Weeding, edging and fresh mulch to keep beds tidy and hold moisture.</p></div>
+      <div class="spec-row"><h3>Planting and installs</h3><span class="unit">By the plant or by the bed</span><p>Shrubs, trees, perennials and new beds, placed for the sun and space you have.</p></div>
+      <div class="spec-row"><h3>Sod and seeding</h3><span class="unit">By the square foot</span><p>Fix bare patches or start a new lawn, with grading and prep done first.</p></div>
+      <div class="spec-row"><h3>Patios and walkways</h3><span class="unit">By the square foot</span><p>Pavers and stone laid on a compacted base so they stay level.</p></div>
+      <div class="spec-row"><h3>Trimming and pruning</h3><span class="unit">By the job or by the hour</span><p>Hedges, shrubs and small trees shaped and cleaned up.</p></div>
+      <div class="spec-row"><h3>Leaf removal</h3><span class="unit">By the job</span><p>Leaves cleared from lawns and beds in fall and hauled away.</p></div>
+      <div class="spec-row"><h3>Snow plowing</h3><span class="unit">By the visit</span><p>Driveways and lots plowed so you can get out after a storm.</p></div>
+      <div class="spec-row"><h3>Snow shoveling</h3><span class="unit">By the visit</span><p>Walkways, steps and entrances shoveled by hand.</p></div>
+    </div>
+  </section>
+
+  <section id="seasons">
+    <div class="sec-head">
+      <p class="label">Through the year</p>
+      <h2>A plan for every season</h2>
+      <p>Most yards need something different each quarter. Here is what we usually do and when.</p>
+    </div>
+    <div class="seasons" id="season-grid">
+      <div class="season" data-months="2,3,4"><span class="tag">Now</span><h3>Spring</h3><ul><li>Bed cleanup</li><li>Fresh mulch</li><li>Planting</li><li>First mowing</li></ul></div>
+      <div class="season" data-months="5,6,7"><span class="tag">Now</span><h3>Summer</h3><ul><li>Weekly mowing</li><li>Trimming</li><li>Weed control</li><li>Watering checks</li></ul></div>
+      <div class="season" data-months="8,9,10"><span class="tag">Now</span><h3>Fall</h3><ul><li>Leaf removal</li><li>Bed cleanup</li><li>Aeration and overseeding</li><li>Final mowing</li></ul></div>
+      <div class="season" data-months="11,0,1"><span class="tag">Now</span><h3>Winter</h3><ul><li>Snow plowing</li><li>Shoveling walks and steps</li></ul></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="sec-head">
+      <p class="label">How it works</p>
+      <h2>From first call to finished yard</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Walk the property</h3><p>We look at the yard with you and talk through what you want.</p></li>
+      <li><h3>Written quote</h3><p>You get a clear price in writing, broken out by job.</p></li>
+      <li><h3>Pick a date</h3><p>We schedule the work around your calendar.</p></li>
+      <li><h3>Work and cleanup</h3><p>We do the job and leave the site clean.</p></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div class="intro">
+        <p class="label">Contact</p>
+        <h2>Ask for a free quote</h2>
+        <p>Call with your address and a short list of what you want done. Tell us the season and the job, whether it is leaves, grass or snow.</p>
+      </div>
+      <div class="fields">
+        <div class="field"><span class="label">Phone</span><div class="val"><span class="text" id="phone">908-578-5474</span><button class="copy" type="button" data-target="phone">Copy</button></div></div>
+        <div class="field"><span class="label">Email</span><div class="val"><span class="text ph" id="email">[Email address]</span><button class="copy" type="button" data-target="email">Copy</button></div></div>
+        <div class="field"><span class="label">Service area</span><div class="val"><span class="text ph">[Towns and counties served]</span></div></div>
+        <div class="field"><span class="label">Hours</span><div class="val"><span class="text ph">[Days and hours]</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>&copy; Dally Landscaping</span>
+  <span class="label">Licensed and insured: [add license number]</span>
+</footer>
+
+<script>
+(function () {
+  try {
+    var m = new Date().getMonth();
+    var seasons = document.querySelectorAll('#season-grid .season');
+    for (var i = 0; i < seasons.length; i++) {
+      var months = seasons[i].getAttribute('data-months').split(',').map(Number);
+      if (months.indexOf(m) !== -1) seasons[i].classList.add('now');
+    }
+  } catch (e) {}
+
+  var buttons = document.querySelectorAll('.copy');
+  Array.prototype.forEach.call(buttons, function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      var text = el.textContent;
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
